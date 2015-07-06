@@ -4,11 +4,7 @@ require.config({
 
     paths: {
         application: '../../',
-        APPLICATION: '../application',
-        auth: '../../',
-        AUTH: '../auth',
-        router: '../../',
-        ROUTER: '../router'
+        APPLICATION: '../application'
     },
 
     shim: {
