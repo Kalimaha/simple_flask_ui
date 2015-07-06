@@ -2,6 +2,7 @@ define(['jquery',
         'handlebars',
         'text!application/html/templates.hbs',
         'i18n!application/nls/translate',
+        'swal',
         'domReady!'], function($, Handlebars, templates, translate) {
 
     'use strict';
@@ -56,11 +57,21 @@ define(['jquery',
                 type: 'GET',
                 url: url,
                 context: this,
-                success: this.process_response
+                success: this.process_response,
+                error: this.process_error
             });
 
         }
 
+    };
+
+    APP.prototype.process_error = function(e) {
+        swal({
+            title: translate.error,
+            text: e.statusText,
+            type: 'error',
+            confirmButtonColor: '#379BCE'
+        });
     };
 
     APP.prototype.process_response = function(response) {
